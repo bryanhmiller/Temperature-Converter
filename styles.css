@@ -1,0 +1,24 @@
+body {
+	display: flex-wrap;
+	background: lightblue;
+}
+
+fieldset {
+	display: flex;
+	text-align: center;
+	margin: 15px;
+	padding: 10px;
+	border-radius: 15px;
+	border: 3px groove darkblue;
+}
+
+input {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.submitbutton {
+	margin: 0 25%;
+	height: 50px;
+	width: 50%;
+}

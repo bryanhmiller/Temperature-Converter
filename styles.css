@@ -3,6 +3,18 @@ body {
 	background: lightblue;
 }
 
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.blue {
+	color: blue;
+}
+
 fieldset {
 	display: flex;
 	text-align: center;

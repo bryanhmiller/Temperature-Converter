@@ -3,6 +3,12 @@ body {
 	background: lightgray;
 }
 
+#results {
+	background; white;
+	height: 100px;
+	width: 100px;
+}
+
 .red {
 	color: red;
 }

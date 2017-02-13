@@ -37,15 +37,18 @@ var button = document.getElementById("converter");
 
 // This function should determine which conversion should // happen 
 // based on which radio button is selected. 
-var fahrenheitToCelcius = document.getElementById("fToC");
-fahrenheitToCelcius.addEventListener("click", clickEvent, true);
-var celciusToFahrenheit = document.getElementById("cToF");
-celciusToFahrenheit.addEventListener("click", clickEvent, false);
+// var fahrenheitToCelcius = document.getElementById("fToC");
+// fahrenheitToCelcius.addEventListener("click", clickEvent, true);
+// var celciusToFahrenheit = document.getElementById("cToF");
+// celciusToFahrenheit.addEventListener("click", clickEvent, false);
 function determineConverter (clickEvent) { 
-	if (clickEvent === true) {
+	console.log("event", clickEvent);
+	if (determineConverter === true) {
 		toCelsius();
+	} else {
+		toFahrenheit;
 	}
-	console.log("event", clickEvent); 
+	 document.getElementById("results").innerHTML = "<h1>" + convertedTemp + "</h1>";
 }
 
 // Assign a function to be executed when the button is clicked 

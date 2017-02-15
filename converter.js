@@ -1,7 +1,10 @@
+var tempField = 0;
 
-var tempField = document.getElementById("initialTemp").value;
+function captureInputTemp() {
+	var tempField = document.getElementById("initialTemp").value;
+	console.log(tempField.value);
+}
 
-console.log(tempField.value);
 
 // Instructions
 
@@ -33,7 +36,16 @@ function toFahrenheit () {
 // Create a button that, when clicked, displays the converted temperature. 
 // Create another button that, when clicked, clears any text in the input 
 // field.
+
 var button = document.getElementById("converter");
+// Assign a function to be executed when the button is clicked 
+button.addEventListener("click", getThisPartyStarted);
+
+function getThisPartyStarted() {
+	function captureInputTemp();
+	fu
+}
+
 
 // This function should determine which conversion should // happen 
 // based on which radio button is selected. 
@@ -50,6 +62,3 @@ function determineConverter (clickEvent) {
 	}
 	 document.getElementById("results").innerHTML = "<h1>" + convertedTemp + "</h1>";
 }
-
-// Assign a function to be executed when the button is clicked 
-button.addEventListener("click", determineConverter);

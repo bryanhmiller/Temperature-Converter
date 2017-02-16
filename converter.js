@@ -1,4 +1,4 @@
-var tempField = 0;
+// var tempField = 0;
 
 function captureInputTemp() {
 	tempField = document.getElementById("initialTemp").value;
@@ -53,8 +53,7 @@ function getThisPartyStarted(){
 // fahrenheitToCelcius.addEventListener("click", clickEvent, true);
 // var celciusToFahrenheit = document.getElementById("cToF");
 // celciusToFahrenheit.addEventListener("click", clickEvent, false);
-function determineConverter (clickEvent) { 
-	console.log("event", clickEvent);
+function determineConverter() { 
 	if (determineConverter === true) {
 		toCelsius();
 	} else {

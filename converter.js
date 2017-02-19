@@ -1,8 +1,10 @@
-// var tempField = 0;
+var tempField = 0;
+var convertedTemp = 0
 
 function captureInputTemp() {
 	tempField = document.getElementById("initialTemp").value;
-	console.log(tempField.value);
+	console.log("captureInputTemp tempField",tempField);
+	return tempField;
 }
 
 
@@ -19,17 +21,18 @@ function captureInputTemp() {
 // If the temperature is less than 32F/0C the color of the converted 
 // temperature should be blue. 
 // For any other temperature, the color should be green. 
-var convertedTemp = 0
 function toCelsius () {
 	// Deduct 32, then multiply by 5, then divide by 9
 	convertedTemp = (tempField - 32) * 5 / 9;
-	console.log(convertedTemp);
+	console.log("toCelsius convertedTemp", convertedTemp);
+	return convertedTemp;
 }
 
 function toFahrenheit () {
 	// Multiply by 9, then divide by 5, then add 32
 	convertedTemp = tempField * 9 / 5 + 32;
-	console.log(convertedTemp);
+	console.log("toFahrenheit convertedTemp", convertedTemp);
+	return convertedTemp;
 }
 
 // Get a reference to the button element in the DOM 
@@ -54,10 +57,18 @@ function getThisPartyStarted(){
 // var celciusToFahrenheit = document.getElementById("cToF");
 // celciusToFahrenheit.addEventListener("click", clickEvent, false);
 function determineConverter() { 
-	if (determineConverter === true) {
-		toCelsius();
-	} else {
-		toFahrenheit;
-	}
+
+	var conversionToCelcius = document.getElementById("fahrenheitToCelcius");
+	conversionToCelcius.addEventListener("click", toCelsius);
+
+	var conversionToFahrenheit = document.getElementById("fahrenheitToCelcius");
+	conversionToFahrenheit.addEventListener("click", toFahrenheit);
+
+	// if (determineConverter === true) {
+	// 	toCelsius();
+	// } else {
+	// 	toFahrenheit;
+	// }
 	document.getElementById("results").innerHTML = "<h1>" + convertedTemp + "</h1>";
+	console.log("results", convertedTemp);
 }

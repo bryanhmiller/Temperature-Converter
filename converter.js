@@ -1,5 +1,5 @@
 var tempField = 0;
-var convertedTemp = 0
+var convertedTemp = 0;
 
 function captureInputTemp() {
 	tempField = document.getElementById("initialTemp").value;
@@ -23,6 +23,7 @@ function captureInputTemp() {
 // For any other temperature, the color should be green. 
 function toCelsius () {
 	// Deduct 32, then multiply by 5, then divide by 9
+	console.log("toCelcius tempField", tempField);
 	convertedTemp = (tempField - 32) * 5 / 9;
 	console.log("toCelsius convertedTemp", convertedTemp);
 	return convertedTemp;
@@ -30,6 +31,7 @@ function toCelsius () {
 
 function toFahrenheit () {
 	// Multiply by 9, then divide by 5, then add 32
+	console.log("toFahrenheit tempField", tempField);
 	convertedTemp = tempField * 9 / 5 + 32;
 	console.log("toFahrenheit convertedTemp", convertedTemp);
 	return convertedTemp;
@@ -40,15 +42,22 @@ function toFahrenheit () {
 // Create another button that, when clicked, clears any text in the input 
 // field.
 
-var button = document.getElementById("converter");
 // Assign a function to be executed when the button is clicked 
-button.addEventListener("click", getThisPartyStarted);
+var convert = document.getElementById("converter");
+convert.addEventListener("click", getThisPartyStarted);
+var clear = document.getElementById("clear");
+clear.addEventListener("click", clearInput);
 
 function getThisPartyStarted(){
 	captureInputTemp();
 	determineConverter();
 }
 
+function clearInput() {
+	console.log("clear Input clicked");
+	tempField = 0;
+	convertedTemp = 0;
+}
 
 // This function should determine which conversion should // happen 
 // based on which radio button is selected. 
@@ -59,9 +68,13 @@ function getThisPartyStarted(){
 function determineConverter() { 
 
 	var conversionToCelcius = document.getElementById("fahrenheitToCelcius");
-	conversionToCelcius.addEventListener("click", toCelsius);
-
 	var conversionToFahrenheit = document.getElementById("fahrenheitToCelcius");
+	if (conversionToCelcius.checked === true) {
+		toCelsius();
+	} else if (conversionToFahrenheit.checked === true) {
+		toFahrenheit();
+	}
+	conversionToCelcius.addEventListener("click", toCelsius);
 	conversionToFahrenheit.addEventListener("click", toFahrenheit);
 
 	// if (determineConverter === true) {

@@ -1,8 +1,14 @@
 var tempField = 0;
+var convertedTemp = 0;
+var conversionToCelcius = document.getElementById("fahrenheitToCelcius");
+var conversionToFahrenheit = document.getElementById("celciusToFahrenheit");
+var results = document.getElementById("results");
+
 
 function captureInputTemp() {
-	var tempField = document.getElementById("initialTemp").value;
-	console.log(tempField.value);
+	tempField = document.getElementById("initialTemp").value;
+	console.log("captureInputTemp tempField",tempField);
+	return tempField;
 }
 
 
@@ -19,17 +25,20 @@ function captureInputTemp() {
 // If the temperature is less than 32F/0C the color of the converted 
 // temperature should be blue. 
 // For any other temperature, the color should be green. 
-
 function toCelsius () {
 	// Deduct 32, then multiply by 5, then divide by 9
-	var convertedTemp = (tempField - 32) * 5 / 9;
-	console.log(convertedTemp);
+	console.log("toCelcius tempField", tempField);
+	convertedTemp = (tempField - 32) * 5 / 9;
+	console.log("toCelsius convertedTemp", convertedTemp);
+	return convertedTemp;
 }
 
 function toFahrenheit () {
 	// Multiply by 9, then divide by 5, then add 32
-	var convertedTemp = tempField * 9 / 5 + 32;
-	console.log(convertedTemp);
+	console.log("toFahrenheit tempField", tempField);
+	convertedTemp = tempField * 9 / 5 + 32;
+	console.log("toFahrenheit convertedTemp", convertedTemp);
+	return convertedTemp;
 }
 
 // Get a reference to the button element in the DOM 
@@ -37,15 +46,27 @@ function toFahrenheit () {
 // Create another button that, when clicked, clears any text in the input 
 // field.
 
-var button = document.getElementById("converter");
 // Assign a function to be executed when the button is clicked 
-button.addEventListener("click", getThisPartyStarted);
+var convert = document.getElementById("converter");
+convert.addEventListener("click", getThisPartyStarted);
+var clear = document.getElementById("clear");
+clear.addEventListener("click", clearInput);
 
-function getThisPartyStarted() {
-	function captureInputTemp();
-	fu
+function getThisPartyStarted(){
+	captureInputTemp();
+	determineConverter();
 }
 
+function clearInput() {
+	console.log("clear Input clicked");
+	tempField = "";
+	convertedTemp = "";
+	results.innerHTML = ""; 
+	console.log("tempField", tempField);
+	console.log("convertedTemp", convertedTemp);
+	conversionToFahrenheit.checked = false;
+	conversionToCelcius.checked = false;
+}
 
 // This function should determine which conversion should // happen 
 // based on which radio button is selected. 
@@ -53,12 +74,23 @@ function getThisPartyStarted() {
 // fahrenheitToCelcius.addEventListener("click", clickEvent, true);
 // var celciusToFahrenheit = document.getElementById("cToF");
 // celciusToFahrenheit.addEventListener("click", clickEvent, false);
-function determineConverter (clickEvent) { 
-	console.log("event", clickEvent);
-	if (determineConverter === true) {
+function determineConverter() { 
+
+	if (conversionToCelcius.checked === true) {
+		conversionToFahrenheit.checked = false;
 		toCelsius();
-	} else {
-		toFahrenheit;
+	} else if (conversionToFahrenheit.checked === true) {
+		conversionToCelcius.checked = false;
+		toFahrenheit();
 	}
-	 document.getElementById("results").innerHTML = "<h1>" + convertedTemp + "</h1>";
+	//conversionToCelcius.addEventListener("click", toCelsius);
+	//conversionToFahrenheit.addEventListener("click", toFahrenheit);
+
+	// if (determineConverter === true) {
+	// 	toCelsius();
+	// } else {
+	// 	toFahrenheit;
+	// }
+	results.innerHTML = "<h1>" + convertedTemp + "</h1>";
+	console.log("results", convertedTemp);
 }

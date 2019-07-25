@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Temperature Converter</title>
+		<link rel="stylesheet" type="text/css" href="/styles.css">
+	</head>
+	<body>
+		<form>
+			<fieldset>
+				<fieldset class="converter">
+				<legend>Temperature Converter</legend>
+					<p>Please enter the temperature to convert:</p>
+						<input type="text" name="applicantfirstname" placeholder="Temperature" maxlength="25" size="25" />
+
+						<input type="radio" name="convertToCelsius" value="5" placeholder="Convert F to C">Convert Fahrenheit to Celsius
+						<input type="radio" name="convertToFahrenheit" value="5" placeholder="Convert C to F">Convert Celsius to Fahrenheit
+  						<button type="submit" class="submitbutton">Convert!</button>
+						<button type="submit" class="submitbutton">Clear Input</button>
+	
+			</fieldset>
+			<div class="results">
+				<!-- Converted temperature holding div -->
+			</div>
+		</form>	
+
+		<script type="text/javascript" src="/converter.js"></script>
+	</body>
+</html>

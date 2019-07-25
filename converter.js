@@ -1,5 +1,9 @@
 var tempField = 0;
 var convertedTemp = 0;
+var conversionToCelcius = document.getElementById("fahrenheitToCelcius");
+var conversionToFahrenheit = document.getElementById("celciusToFahrenheit");
+var results = document.getElementById("results");
+
 
 function captureInputTemp() {
 	tempField = document.getElementById("initialTemp").value;
@@ -55,8 +59,13 @@ function getThisPartyStarted(){
 
 function clearInput() {
 	console.log("clear Input clicked");
-	tempField = 0;
-	convertedTemp = 0;
+	tempField = "";
+	convertedTemp = "";
+	results.innerHTML = ""; 
+	console.log("tempField", tempField);
+	console.log("convertedTemp", convertedTemp);
+	conversionToFahrenheit.checked = false;
+	conversionToCelcius.checked = false;
 }
 
 // This function should determine which conversion should // happen 
@@ -67,21 +76,21 @@ function clearInput() {
 // celciusToFahrenheit.addEventListener("click", clickEvent, false);
 function determineConverter() { 
 
-	var conversionToCelcius = document.getElementById("fahrenheitToCelcius");
-	var conversionToFahrenheit = document.getElementById("fahrenheitToCelcius");
 	if (conversionToCelcius.checked === true) {
+		conversionToFahrenheit.checked = false;
 		toCelsius();
 	} else if (conversionToFahrenheit.checked === true) {
+		conversionToCelcius.checked = false;
 		toFahrenheit();
 	}
-	conversionToCelcius.addEventListener("click", toCelsius);
-	conversionToFahrenheit.addEventListener("click", toFahrenheit);
+	//conversionToCelcius.addEventListener("click", toCelsius);
+	//conversionToFahrenheit.addEventListener("click", toFahrenheit);
 
 	// if (determineConverter === true) {
 	// 	toCelsius();
 	// } else {
 	// 	toFahrenheit;
 	// }
-	document.getElementById("results").innerHTML = "<h1>" + convertedTemp + "</h1>";
+	results.innerHTML = "<h1>" + convertedTemp + "</h1>";
 	console.log("results", convertedTemp);
 }

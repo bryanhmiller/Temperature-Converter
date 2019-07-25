@@ -1,26 +1,28 @@
 body {
 	display: flex-wrap;
-	background: lightblue;
+	background: lightgray;
 }
 
-fieldset {
-	display: flex;
-	text-align: center;
-	margin: 15px;
-	padding: 10px;
-	border-radius: 15px;
-	border: 3px groove darkblue;
+#results {
+	background; white;
+	height: 100px;
+	width: 100px;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.blue {
+	color: blue;
 }
 
 input {
 	text-align: center;
-	margin: 0 auto;
 }
 
 
-
-.submitbutton {
-	margin: 0 25%;
-	height: 50px;
-	width: 50%;
-}

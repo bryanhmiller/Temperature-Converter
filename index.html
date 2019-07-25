@@ -5,20 +5,30 @@
 		<link rel="stylesheet" type="text/css" href="/styles.css">
 	</head>
 	<body>
-		<form>
-			<fieldset>
-				<fieldset class="converter">
-				<legend>Temperature Converter</legend>
-					<p>Please enter the temperature to convert:</p>
-						<input type="text" name="applicantfirstname" placeholder="Temperature" maxlength="25" size="25" />
+		<h1>Temperature Converter</h1>
+<!-- In the HTML, have one input field where someone can enter in a temperature.  -->
+			<p>
+        		<label for="temp"></label>
+        		<input id="initialTemp" type="number" placeholder="Enter Temperature" oninput="captureInputTemp">
+      		</p>
+<!-- Create a radio button group where Celsius or Fahrenheit can be selected as the scale that the number should be converted to.					-->							
+			
+			<p id="two"></p>
+      			<input type="radio" onclick="determineConverter('true');">Fahrenheit to Celcius</button>
+    		</p>
+  			<p>
+    			<input type="radio" onclick="determineConverter('false');">Celcius to Fahrenheit</button>
+  			</p>
+<!-- 	Create a button that, when clicked, displays the converted 					temperature. 
+		Create another button that, when clicked, clears any text in the input field.  -->
+ 			<p>
+ 				<button id="converter" onchange="clicked">Convert!</button>
+    			<button onclick="clearInput();">Clear</button>
+    		</p>
+<!-- Create a block level element that will hold the text of the converted 
+temperature. -->
+			<div id="results">
 
-						<input type="radio" name="convertToCelsius" value="5" placeholder="Convert F to C">Convert Fahrenheit to Celsius
-						<input type="radio" name="convertToFahrenheit" value="5" placeholder="Convert C to F">Convert Celsius to Fahrenheit
-  						<button type="submit" class="submitbutton">Convert!</button>
-						<button type="submit" class="submitbutton">Clear Input</button>
-	
-			</fieldset>
-			<div class="results">
 				<!-- Converted temperature holding div -->
 			</div>
 		</form>	

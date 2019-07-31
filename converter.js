@@ -1,8 +1,10 @@
 var tempField = 0;
 var convertedTemp = 0;
-var conversionToCelcius = document.getElementById("fahrenheitToCelcius");
-var conversionToFahrenheit = document.getElementById("celciusToFahrenheit");
+var conversionToCelsius = document.getElementById("fahrenheitToCelsius");
+var conversionToFahrenheit = document.getElementById("celsiusToFahrenheit");
 var results = document.getElementById("results");
+var convert = document.getElementById("converter");
+var clear = document.getElementById("clear");
 
 
 function captureInputTemp() {
@@ -27,7 +29,7 @@ function captureInputTemp() {
 // For any other temperature, the color should be green. 
 function toCelsius () {
 	// Deduct 32, then multiply by 5, then divide by 9
-	console.log("toCelcius tempField", tempField);
+	console.log("toCelsius tempField", tempField);
 	convertedTemp = (tempField - 32) * 5 / 9;
 	console.log("toCelsius convertedTemp", convertedTemp);
 	return convertedTemp;
@@ -47,10 +49,6 @@ function toFahrenheit () {
 // field.
 
 // Assign a function to be executed when the button is clicked 
-var convert = document.getElementById("converter");
-convert.addEventListener("click", getThisPartyStarted);
-var clear = document.getElementById("clear");
-clear.addEventListener("click", clearInput);
 
 function getThisPartyStarted(){
 	captureInputTemp();
@@ -59,38 +57,44 @@ function getThisPartyStarted(){
 
 function clearInput() {
 	console.log("clear Input clicked");
-	tempField = "";
+	tempField = 0;
+	document.getElementById("initialTemp").value = "";
 	convertedTemp = "";
 	results.innerHTML = ""; 
 	console.log("tempField", tempField);
 	console.log("convertedTemp", convertedTemp);
 	conversionToFahrenheit.checked = false;
-	conversionToCelcius.checked = false;
+	conversionToCelsius.checked = false;
 }
 
 // This function should determine which conversion should // happen 
 // based on which radio button is selected. 
-// var fahrenheitToCelcius = document.getElementById("fToC");
-// fahrenheitToCelcius.addEventListener("click", clickEvent, true);
-// var celciusToFahrenheit = document.getElementById("cToF");
-// celciusToFahrenheit.addEventListener("click", clickEvent, false);
+// var fahrenheitToCelsius = document.getElementById("fToC");
+// fahrenheitToCelsius.addEventListener("click", clickEvent, true);
+// var celsiusToFahrenheit = document.getElementById("cToF");
+// celsiusToFahrenheit.addEventListener("click", clickEvent, false);
 function determineConverter() { 
 
-	if (conversionToCelcius.checked === true) {
+	if (conversionToCelsius.checked === true) {
 		conversionToFahrenheit.checked = false;
 		toCelsius();
 	} else if (conversionToFahrenheit.checked === true) {
-		conversionToCelcius.checked = false;
+		conversionToCelsius.checked = false;
 		toFahrenheit();
 	}
-	//conversionToCelcius.addEventListener("click", toCelsius);
-	//conversionToFahrenheit.addEventListener("click", toFahrenheit);
-
-	// if (determineConverter === true) {
-	// 	toCelsius();
-	// } else {
-	// 	toFahrenheit;
-	// }
 	results.innerHTML = "<h1>" + convertedTemp + "</h1>";
 	console.log("results", convertedTemp);
 }
+
+//function thereCanBeOnlyOne() {
+//	if (conversionToFahrenheit.checked === true) {
+//		conversionToCelsius.checked === false;
+//	} else if (conversionToCelsius.checked === true) {
+//		conversionToFahrenheit.checked === false;
+//	}
+//}
+
+//toFahrenheit.addEventListener("check", thereCanBeOnlyOne);
+//toCelsius.addEventListener("click", thereCanBeOnlyOne);
+convert.addEventListener("click", getThisPartyStarted);
+clear.addEventListener("click", clearInput);

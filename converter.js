@@ -1,5 +1,11 @@
+// Instructions
+
+// Write a program that will convert a temperature from fahrenheit to celsius, 
+// or from celsius to fahrenheit.
 var tempField = 0;
 var convertedTemp = 0;
+var conversionFrom = "";
+var conversionTo = "";
 var conversionToCelsius = document.getElementById("fahrenheitToCelsius");
 var conversionToFahrenheit = document.getElementById("celsiusToFahrenheit");
 var results = document.getElementById("results");
@@ -13,20 +19,6 @@ function captureInputTemp() {
 	return tempField;
 }
 
-
-// Instructions
-
-// Write a program that will convert a temperature from fahrenheit to celsius, 
-// or from celsius to fahrenheit.
-
-// Add an event handler to the input field that checks if the user pressed the 
-// enter key, and if that happens, perform the conversion. 
-
-// If the temperature is greater than 90F/32C the color of the converted 
-// temperature should be red. 
-// If the temperature is less than 32F/0C the color of the converted 
-// temperature should be blue. 
-// For any other temperature, the color should be green. 
 function toCelsius () {
 	// Deduct 32, then multiply by 5, then divide by 9
 	console.log("toCelsius tempField", tempField);
@@ -47,12 +39,11 @@ function toFahrenheit () {
 // Create a button that, when clicked, displays the converted temperature. 
 // Create another button that, when clicked, clears any text in the input 
 // field.
-
 // Assign a function to be executed when the button is clicked 
 
 function getThisPartyStarted(){
 	captureInputTemp();
-	determineConverter();
+	colorOutput();
 }
 
 function clearInput() {
@@ -69,32 +60,34 @@ function clearInput() {
 
 // This function should determine which conversion should // happen 
 // based on which radio button is selected. 
-// var fahrenheitToCelsius = document.getElementById("fToC");
-// fahrenheitToCelsius.addEventListener("click", clickEvent, true);
-// var celsiusToFahrenheit = document.getElementById("cToF");
-// celsiusToFahrenheit.addEventListener("click", clickEvent, false);
 function determineConverter() { 
-
 	if (conversionToCelsius.checked === true) {
 		conversionToFahrenheit.checked = false;
 		toCelsius();
+		conversionFrom = " Farenheit ";
+		conversionTo = " Celsius."
 	} else if (conversionToFahrenheit.checked === true) {
 		conversionToCelsius.checked = false;
 		toFahrenheit();
+		conversionFrom = " Celsius ";
+		conversionTo = " Farenheit."
 	}
-	results.innerHTML = "<h1>" + convertedTemp + "</h1>";
+}
+
+// If the temperature is greater than 90F/32C the color of the converted 
+// temperature should be red. 
+// If the temperature is less than 32F/0C the color of the converted 
+// temperature should be blue. 
+// For any other temperature, the color should be green. 
+function colorOutput() {
+	determineConverter();
+	if ((conversionTo == " Celsius." && convertedTemp > 90) || (conversionTo == " Farenheit." && convertedTemp > 32)) {
+		results.classlist.add("red");
+	}
+	convertedTemp = Math.round( convertedTemp *	10) / 10;
+	results.innerHTML = "<h1>" + tempField + " degrees " + conversionFrom + " is " + convertedTemp + " degrees " + conversionTo +"</h1>";
 	console.log("results", convertedTemp);
 }
 
-//function thereCanBeOnlyOne() {
-//	if (conversionToFahrenheit.checked === true) {
-//		conversionToCelsius.checked === false;
-//	} else if (conversionToCelsius.checked === true) {
-//		conversionToFahrenheit.checked === false;
-//	}
-//}
-
-//toFahrenheit.addEventListener("check", thereCanBeOnlyOne);
-//toCelsius.addEventListener("click", thereCanBeOnlyOne);
 convert.addEventListener("click", getThisPartyStarted);
 clear.addEventListener("click", clearInput);

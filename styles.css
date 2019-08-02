@@ -4,9 +4,9 @@ body {
 }
 
 #results {
-	background; white;
-	height: 100px;
-	width: 100px;
+	background: white;
+	padding: 0 auto;
+	text-align: center;
 }
 
 .red {

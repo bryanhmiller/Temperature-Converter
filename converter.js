@@ -81,9 +81,9 @@ function determineConverter() {
 // For any other temperature, the color should be green. 
 function colorOutput() {
 	determineConverter();
-	if ((conversionTo == " Celsius." && convertedTemp > 90) || (conversionTo == " Farenheit." && convertedTemp > 32)) {
-		results.classlist.add("red");
-	}
+//	if ((conversionTo == " Celsius." && convertedTemp > 90) || (conversionTo == " Farenheit." && convertedTemp > 32)) {
+//		results.classlist.add("red");
+//	} Rework this.
 	convertedTemp = Math.round( convertedTemp *	10) / 10;
 	results.innerHTML = "<h1>" + tempField + " degrees " + conversionFrom + " is " + convertedTemp + " degrees " + conversionTo +"</h1>";
 	console.log("results", convertedTemp);

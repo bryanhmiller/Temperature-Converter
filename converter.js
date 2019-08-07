@@ -12,7 +12,6 @@ var results = document.getElementById("results");
 var convert = document.getElementById("converter");
 var clear = document.getElementById("clear");
 
-
 function captureInputTemp() {
 	tempField = document.getElementById("initialTemp").value;
 	console.log("captureInputTemp tempField",tempField);
@@ -56,6 +55,7 @@ function clearInput() {
 	console.log("convertedTemp", convertedTemp);
 	conversionToFahrenheit.checked = false;
 	conversionToCelsius.checked = false;
+	results.classList.remove("red", "blue");
 }
 
 // This function should determine which conversion should // happen 
@@ -64,13 +64,13 @@ function determineConverter() {
 	if (conversionToCelsius.checked === true) {
 		conversionToFahrenheit.checked = false;
 		toCelsius();
-		conversionFrom = " Farenheit ";
-		conversionTo = " Celsius."
+		conversionFrom = "Farenheit";
+		conversionTo = "Celsius"
 	} else if (conversionToFahrenheit.checked === true) {
 		conversionToCelsius.checked = false;
 		toFahrenheit();
-		conversionFrom = " Celsius ";
-		conversionTo = " Farenheit."
+		conversionFrom = "Celsius";
+		conversionTo = "Farenheit"
 	}
 }
 
@@ -81,12 +81,15 @@ function determineConverter() {
 // For any other temperature, the color should be green. 
 function colorOutput() {
 	determineConverter();
-//	if ((conversionTo == " Celsius." && convertedTemp > 90) || (conversionTo == " Farenheit." && convertedTemp > 32)) {
-//		results.classlist.add("red");
-//	} Rework this.
+	if ((conversionTo == "Celsius" && convertedTemp > 32) || (conversionTo == "Farenheit" && convertedTemp > 90)) {
+		results.classList.add("red");
+	} else if ((conversionTo == "Celsius" && convertedTemp < 0) || (conversionTo == "Farenheit" && convertedTemp < 32)) {
+		results.classList.add("blue");
+	}
 	convertedTemp = Math.round( convertedTemp *	10) / 10;
-	results.innerHTML = "<h1>" + tempField + " degrees " + conversionFrom + " is " + convertedTemp + " degrees " + conversionTo +"</h1>";
+	results.innerHTML = "<h1>" + tempField + " degrees " + conversionFrom + " is " + convertedTemp + " degrees " + conversionTo + ".</h1>";
 	console.log("results", convertedTemp);
+
 }
 
 convert.addEventListener("click", getThisPartyStarted);

@@ -3,10 +3,29 @@ body {
 	background: lightgray;
 }
 
+div {
+	border: 1px solid blue;
+	display: flex;
+	justify-content: center;
+}
+
+input {
+	text-align: center;
+	height: 1.5em;
+}
+button {
+	margin: 0 10px;
+}
+
 #results {
 	background: white;
 	padding: 0 auto;
 	text-align: center;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
 }
 
 .color {
@@ -21,9 +40,5 @@ body {
 	color: blue;
 }
 
-input {
-	text-align: center;
-	margin: 0 auto;
-}
 
 

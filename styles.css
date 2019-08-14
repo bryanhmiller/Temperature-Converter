@@ -1,20 +1,37 @@
 body {
-	display: flex-wrap;
 	background: lightgray;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 div {
-	border: 1px solid blue;
-	display: flex;
+	margin: 2%;
 	justify-content: center;
+	align-items: center;
+}
+
+@media all and (max-width: 500px) {
+	
+	body {background-color: pink;
+	}	
+
+	div {
+		margin: 5%;
+		justify-content: center;
+		align-items: center;
+	}
+
 }
 
 input {
 	text-align: center;
 	height: 1.5em;
+	font-size: 1.2em;
 }
+
 button {
-	margin: 0 10px;
+	margin: 0 20px;
 }
 
 #results {
@@ -23,9 +40,8 @@ button {
 	text-align: center;
 }
 
-.buttons {
+.content {
 	display: flex;
-	justify-content: center;
 }
 
 .color {
